@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <assert.h>
 
 #define IN 0
 #define OUT 1
