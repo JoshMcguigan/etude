@@ -16,11 +16,12 @@ void vector_push(Vector *vector, void *item) {
             new_capacity = 1;
         }
 
-        vector->items = realloc(vector->items, new_capacity * sizeof(size_t));
+        vector->items = realloc(vector->items, new_capacity * sizeof(void*));
+
         vector->capacity = new_capacity;
     }
 
-    *(vector->items + vector->length * sizeof(size_t)) = item;
+    *(vector->items + vector->length) = item;
     vector->length++;
 }
 
@@ -30,6 +31,14 @@ void *vector_pop(Vector *vector) {
     }
 
     vector->length--;
-    void *item = *(vector->items + vector->length * sizeof(size_t));
+    void *item = *(vector->items + vector->length);
     return item;
+}
+
+void vector_free(Vector *vector) {
+    free(vector->items);
+
+    vector->length = 0;
+    vector->capacity = 0;
+    vector->items = NULL;
 }

@@ -36,4 +36,6 @@ int main() {
 
     t = (thing *)vector_pop(&s);
     assert(t == NULL);
+
+    vector_free(&s);
 }
