@@ -10,9 +10,9 @@ typedef struct {
 
 int main() {
     LinkedList s = linked_list_new();
-    thing* t;
+    thing *t;
 
-    t = (thing*) malloc(sizeof(thing));
+    t = (thing *)malloc(sizeof(thing));
     t->x = 1;
     t->y = 2;
     linked_list_push(&s, t);
@@ -27,7 +27,7 @@ int main() {
     assert(t->y == 4);
     free(t);
 
-    t = (thing*) linked_list_pop(&s);
+    t = (thing *)linked_list_pop(&s);
     assert(t->x == 1);
     assert(t->y == 2);
     free(t);

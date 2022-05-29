@@ -1,7 +1,7 @@
 #include <stdlib.h>
 
 typedef struct {
-    void** items;
+    void **items;
     size_t length, capacity;
 } Vector;
 

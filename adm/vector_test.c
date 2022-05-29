@@ -10,9 +10,9 @@ typedef struct {
 
 int main() {
     Vector s = vector_new();
-    thing* t;
+    thing *t;
 
-    t = (thing*) malloc(sizeof(thing));
+    t = (thing *)malloc(sizeof(thing));
     t->x = 1;
     t->y = 2;
     vector_push(&s, t);
@@ -28,7 +28,7 @@ int main() {
     assert(t->y == 4);
     free(t);
 
-    t = (thing*) vector_pop(&s);
+    t = (thing *)vector_pop(&s);
     assert(t != NULL);
     assert(t->x == 1);
     assert(t->y == 2);

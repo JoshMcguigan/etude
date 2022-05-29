@@ -4,7 +4,7 @@
 #include "vector.h"
 
 Vector vector_new() {
-    return (Vector){ .items = NULL, .length = 0, .capacity = 0 };
+    return (Vector){.items = NULL, .length = 0, .capacity = 0};
 }
 
 void vector_push(Vector *vector, void *item) {
@@ -16,7 +16,7 @@ void vector_push(Vector *vector, void *item) {
             new_capacity = 1;
         }
 
-        vector->items = realloc(vector->items, new_capacity * sizeof(void*));
+        vector->items = realloc(vector->items, new_capacity * sizeof(void *));
 
         vector->capacity = new_capacity;
     }
