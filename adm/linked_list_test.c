@@ -2,34 +2,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "lib/stack.h"
+#include "lib/linked_list.h"
 
 typedef struct {
     int x, y;
 } thing;
 
 int main() {
-    stack s = stack_new();
+    LinkedList s = linked_list_new();
     thing* t;
 
     t = (thing*) malloc(sizeof(thing));
     t->x = 1;
     t->y = 2;
-    stack_push(&s, t);
+    linked_list_push(&s, t);
 
     t = (thing *)malloc(sizeof(thing));
     t->x = 3;
     t->y = 4;
-    stack_push(&s, t);
+    linked_list_push(&s, t);
 
-    t = (thing *)stack_pop(&s);
+    t = (thing *)linked_list_pop(&s);
     assert(t->x == 3);
     assert(t->y == 4);
+    free(t);
 
-    t = (thing*) stack_pop(&s);
+    t = (thing*) linked_list_pop(&s);
     assert(t->x == 1);
     assert(t->y == 2);
+    free(t);
 
-    t = (thing *)stack_pop(&s);
+    t = (thing *)linked_list_pop(&s);
     assert(t == NULL);
 }
