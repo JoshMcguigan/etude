@@ -7,6 +7,10 @@ Vector vector_new() {
     return (Vector){.items = NULL, .length = 0, .capacity = 0};
 }
 
+size_t vector_length(Vector *vector) {
+    return vector->length;
+}
+
 void vector_push(Vector *vector, void *item) {
     if (vector->length >= vector->capacity) {
         size_t new_capacity;
@@ -25,13 +29,22 @@ void vector_push(Vector *vector, void *item) {
     vector->length++;
 }
 
+void *vector_peek(Vector *vector) {
+    if (!vector->length) {
+        return NULL;
+    }
+
+    void *item = *(vector->items + (vector->length - 1));
+    return item;
+}
+
 void *vector_pop(Vector *vector) {
     if (!vector->length) {
         return NULL;
     }
 
+    void *item = vector_peek(vector);
     vector->length--;
-    void *item = *(vector->items + vector->length);
     return item;
 }
 
