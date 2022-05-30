@@ -27,3 +27,17 @@ void *linked_list_pop(LinkedList *linked_list) {
         return NULL;
     }
 }
+
+void linked_list_reverse(LinkedList *linked_list) {
+    LinkedListNode *previous_node = NULL;
+    LinkedListNode *current_node = linked_list->next;
+
+    while (current_node != NULL) {
+        LinkedListNode *next_node = current_node->next;
+        current_node->next = previous_node;
+        previous_node = current_node;
+        current_node = next_node;
+    }
+
+    linked_list->next = previous_node;
+}
